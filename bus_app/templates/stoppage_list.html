@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+  Stoppage List
+{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/bus_list.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="top-bar">
+    <a href="{% url 'add_stoppage' %}" class="add-btn">ADD STOPPAGE +</a>
+  </div>
+
+  <form method="get" class="filter-form">
+    <input type="text" name="search" placeholder="Search stoppage..." value="{{ request.GET.search }}" class="styled-select" style="width:300px;">
+    <button type="submit" class="submit-btn">Search</button>
+  </form>
+
+  {% if stoppages %}
+    <table>
+      <thead>
+        <tr>
+          <th>Stoppage Name</th>
+          <th>Route</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stoppage in stoppages %}
+          <tr>
+            <td>{{ stoppage.name }}</td>
+            <td>{{ stoppage.route.name }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="no-data">No stoppages found.</p>
+  {% endif %}
+{% endblock %}

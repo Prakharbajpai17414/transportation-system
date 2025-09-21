@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+  Bus Details - {{ bus.number }}
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/bus_detail.css' %}">
+
+{% endblock %}
+
+{% block content %}
+  <div class="bus-detail-container">
+    <h2>Bus Details - {{ bus.number }}</h2>
+
+    <div class="section">
+      <div class="section-title">Basic Info</div>
+      <div class="field-row"><span class="field-label">Bus Number:</span> <span>{{ bus.number }}</span></div>
+      <div class="field-row"><span class="field-label">Identifier Number:</span> <span>{{ bus.identifier_number }}</span></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Pollution Details</div>
+      <div class="field-row"><span class="field-label">Pollution Paid:</span> <span>{{ bus.pollution_paid }}</span></div>
+      <div class="field-row"><span class="field-label">Issue Date:</span> <span>{{ bus.pollution_issue_date }}</span></div>
+      <div class="field-row"><span class="field-label">Valid Upto:</span> <span>{{ bus.pollution_valid_upto }}</span></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Insurance Details</div>
+      <div class="field-row"><span class="field-label">Insurance Paid:</span> <span>{{ bus.insurance_paid }}</span></div>
+      <div class="field-row"><span class="field-label">Issue Date:</span> <span>{{ bus.insurance_issue_date }}</span></div>
+      <div class="field-row"><span class="field-label">Valid Upto:</span> <span>{{ bus.insurance_valid_upto }}</span></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Tax & Permit</div>
+      <div class="field-row"><span class="field-label">Tax Paid:</span> <span>{{ bus.tax_paid }}</span></div>
+      <div class="field-row"><span class="field-label">Tax Issue Date:</span> <span>{{ bus.tax_issue_date }}</span></div>
+      <div class="field-row"><span class="field-label">Tax Valid Upto:</span> <span>{{ bus.tax_valid_upto }}</span></div>
+      <div class="field-row"><span class="field-label">Permit:</span> <span>{{ bus.permit }}</span></div>
+      <div class="field-row"><span class="field-label">Permit Issue Date:</span> <span>{{ bus.permit_issue_date }}</span></div>
+      <div class="field-row"><span class="field-label">Permit Valid Upto:</span> <span>{{ bus.permit_valid_upto }}</span></div>
+    </div>
+
+    <a href="{% url 'bus_list' %}" class="back-link">← Back to Bus List</a>
+  </div>
+{% endblock %}
